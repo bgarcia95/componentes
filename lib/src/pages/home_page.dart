@@ -1,10 +1,10 @@
-import 'package:componentes/src/pages/alert_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:componentes/src/providers/menu_provider.dart';
 import 'package:componentes/src/utils/icono_string_util.dart';
 
 class HomePage extends StatelessWidget {
+  static const String id = 'home';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
