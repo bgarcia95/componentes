@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       // home: HomePage(),
       initialRoute: '/',
       routes: getApplicationRoutes(),
-      onGenerateRoute: (RouteSettings settings) {
-        // print('Ruta llamada: ${settings.name}');
-        return MaterialPageRoute(
-          builder: (BuildContext context) => AlertPage(),
-        );
-      },
+      // onGenerateRoute: (RouteSettings settings) {
+      //   // print('Ruta llamada: ${settings.name}');
+      //   return MaterialPageRoute(
+      //     builder: (BuildContext context) => AlertPage(),
+      //   );
+      // },
     );
   }
 }
