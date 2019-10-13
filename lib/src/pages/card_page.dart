@@ -15,10 +15,21 @@ class CardPage extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         children: <Widget>[
           _cardTipo1(),
-          SizedBox(
-            height: 30.0,
-          ),
+          SizedBox(height: 30.0),
           _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
         ],
       ),
     );
@@ -26,6 +37,8 @@ class CardPage extends StatelessWidget {
 
   _cardTipo1() {
     return Card(
+      elevation: 10.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -33,9 +46,15 @@ class CardPage extends StatelessWidget {
               Icons.photo_album,
               color: Colors.blue,
             ),
-            title: Text('Soy el titulo de esta tarjeta'),
-            subtitle: Text(
-                'Aqui estamos demostrando lo que son las descripciones dentro de la tarjeta para practicar lo que son las propiedades dentro de un ListTile.'),
+            title: Padding(
+              padding: const EdgeInsets.only(top: 5.0),
+              child: Text('Soy el titulo de esta tarjeta'),
+            ),
+            subtitle: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              child: Text(
+                  'Aqui estamos demostrando lo que son las descripciones dentro de la tarjeta para practicar lo que son las propiedades dentro de un ListTile.'),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -45,7 +64,7 @@ class CardPage extends StatelessWidget {
                 onPressed: () {},
               ),
               FlatButton(
-                child: Text('Ok'),
+                child: Text('OK'),
                 onPressed: () {},
               ),
             ],
@@ -56,26 +75,42 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _cardTipo2() {
-    return Card(
+    final card = Container(
       child: Column(
         children: <Widget>[
           FadeInImage(
             placeholder: AssetImage('assets/jar-loading.gif'),
-            image: NetworkImage('http://cdn.cnn.com/cnnnext/dam/assets/190517091026-07-unusual-landscapes-travel.jpg'),
+            image: NetworkImage(
+                'http://cdn.cnn.com/cnnnext/dam/assets/190517091026-07-unusual-landscapes-travel.jpg'),
             fadeInDuration: Duration(milliseconds: 200),
             height: 300.0,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
-
-          // Image(
-          //   image: NetworkImage(
-          //       'http://cdn.cnn.com/cnnnext/dam/assets/190517091026-07-unusual-landscapes-travel.jpg'),
-          // ),
           Container(
             padding: EdgeInsets.all(10.0),
             child: Text('No tendo idea de que poner'),
           ),
         ],
+      ),
+    );
+
+    // Returning our Card Widget (or simmilar)
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20.0),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10.0,
+            spreadRadius: 0.8,
+            offset: Offset(1.5, 0.5),
+          )
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: card,
       ),
     );
   }

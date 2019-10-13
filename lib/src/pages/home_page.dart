@@ -35,8 +35,8 @@ class HomePage extends StatelessWidget {
 
     data.forEach((opt) {
       final widgetTemp = ListTile(
-        title: Text(opt['texto']),
         leading: getIcon(opt['icon']),
+        title: Text(opt['texto']),
         trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
         onTap: () {
           // final route = MaterialPageRoute(builder: (context) => AlertPage());
