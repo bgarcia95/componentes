@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:componentes/src/routes/routes.dart';
 
@@ -10,15 +11,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Componentes App',
-      // home: HomePage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // English
+        const Locale('es', 'ES'), // Spanish // 
+      ],
       initialRoute: '/',
       routes: getApplicationRoutes(),
-      // onGenerateRoute: (RouteSettings settings) {
-      //   // print('Ruta llamada: ${settings.name}');
-      //   return MaterialPageRoute(
-      //     builder: (BuildContext context) => AlertPage(),
-      //   );
-      // },
     );
   }
 }
