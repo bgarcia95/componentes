@@ -54,18 +54,34 @@ class _ListaPageState extends State<ListaPage> {
   }
 
   Widget _crearLista() {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _listaNumeros.length,
-      itemBuilder: (BuildContext context, index) {
-        final imagen = _listaNumeros[index];
-        return FadeInImage(
-          fit: BoxFit.contain,
-          image: NetworkImage('https://picsum.photos/id/$imagen/300/400'),
-          placeholder: AssetImage('assets/jar-loading.gif'),
-        );
-      },
+    return RefreshIndicator(
+      onRefresh: obternerPagina1,
+      child: ListView.builder(
+        controller: _scrollController,
+        itemCount: _listaNumeros.length,
+        itemBuilder: (BuildContext context, index) {
+          final imagen = _listaNumeros[index];
+          return FadeInImage(
+            fit: BoxFit.contain,
+            image: NetworkImage('https://picsum.photos/id/$imagen/300/400'),
+            placeholder: AssetImage('assets/jar-loading.gif'),
+          );
+        },
+      ),
     );
+  }
+
+  // Para nuestro refresher
+  Future<Null> obternerPagina1() async {
+    final duration = new Duration(seconds: 2);
+    new Timer(duration, () {
+      _listaNumeros.clear();
+      _ultimoNumero++;
+      _agregar10();
+    });
+
+    return Future.delayed(duration);
+    
   }
 
   void _agregar10() {
@@ -85,16 +101,13 @@ class _ListaPageState extends State<ListaPage> {
     final duration = new Duration(seconds: 2);
     return new Timer(duration, respuestaHTTP);
   }
-  
+
   // Infinite Scroll con Futures
   void respuestaHTTP() {
     _isLoading = false;
 
-    _scrollController.animateTo(
-      _scrollController.position.pixels + 100,
-      curve: Curves.fastOutSlowIn,
-      duration: Duration(milliseconds: 250)
-    );
+    _scrollController.animateTo(_scrollController.position.pixels + 100,
+        curve: Curves.fastOutSlowIn, duration: Duration(milliseconds: 250));
     _agregar10();
   }
 
