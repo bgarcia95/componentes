@@ -28,8 +28,8 @@
         },
         {
             "ruta" : "slider",
-            "icon" : "list",
-            "texto": "Sliders"
+            "icon" : "tune",
+            "texto": "Slider - Checks"
         }
         
     ]

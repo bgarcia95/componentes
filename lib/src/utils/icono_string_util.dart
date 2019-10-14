@@ -7,7 +7,7 @@ final _icons= <String, IconData> {
   'folder_open'  : Icons.folder_open,
   'donut_large' : Icons.donut_large,
   'input': Icons.input,
-  'list' : Icons.list
+  'tune' : Icons.tune
 };
 
 // Function that returns an icon for our ListTile on home_page
